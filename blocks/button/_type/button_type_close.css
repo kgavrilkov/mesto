@@ -1,0 +1,21 @@
+.button_type_close {
+  width: 41px;
+  height: 41px;
+  margin-top: 158px;
+  margin-right: calc(100% - ((100% - 430px)/2 + 430px + 41px));
+  background-image: url(../../../images/popup-close-button.svg);
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.button_type_close:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+@media screen and (max-width: 1070px) {
+  .button_type_close {
+    margin-top: 258px;
+  }
+}
