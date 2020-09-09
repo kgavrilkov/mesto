@@ -5,13 +5,8 @@
   height: 41px;
   background-image: url(../../../images/popup-close-button.svg);
   background-position: center;
-  background-color: transparent;
   border: none;
   cursor: pointer;
-}
-
-.button_type_close:hover {
-  background-color: rgba(0, 0, 0, 0);
 }
 
 @media screen and (max-width: 520px) {
