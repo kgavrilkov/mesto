@@ -2,12 +2,8 @@
   width: 21px;
   height: 18px;
   background-image: url(../../../images/cards-like-button.svg);
-  background-color: #FFFFFF;
+  background-color: transparent;
   border: none;
   align-self: center;
   cursor: pointer;
-}
-
-.button_type_like:hover {
-  background-color: #FFFFFF;
 }
