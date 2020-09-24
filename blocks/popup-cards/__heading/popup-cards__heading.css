@@ -1,4 +1,4 @@
-.popup__heading {
+.popup-cards__heading {
   max-width: 330px;
   margin: 0 0 45px;
   font-style: normal;
@@ -9,8 +9,8 @@
 }
 
 @media screen and (max-width: 460px) {
-  .popup__heading {
+  .popup-cards__heading {
     font-size: 18px;
-    margin: 0 0 65px;
+    margin: 0 0 27px;
   }
 }

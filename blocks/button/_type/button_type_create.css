@@ -1,4 +1,4 @@
-.button_type_save {
+.button_type_create {
   max-width: 358px;
   height: 50px;
   margin: 0;
@@ -14,13 +14,14 @@
   cursor: pointer;
 }
 
-.button_type_save:hover {
+.button_type_create:hover {
   background-color: #000000;
   opacity: .8;
 }
 
 @media screen and (max-width: 460px) {
-  .button_type_save {
+  .button_type_create {
+    height: 40px;
     font-size: 14px;
   }
 }

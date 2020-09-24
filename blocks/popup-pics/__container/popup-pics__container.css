@@ -1,0 +1,4 @@
+.popup-pics__container {
+  display: flex;
+  max-width: 75vw;
+}
