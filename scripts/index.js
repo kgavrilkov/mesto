@@ -81,7 +81,7 @@ function popupCardsCloseByClickOnOverlay() {
   popupCardsToggle();
 }
 
-function addCard(item) {
+function createCard(item) {
   const cardElement = cardTemplate.cloneNode(true);
   cardElement.querySelector('.card__image').src = item.link;
   cardElement.querySelector('.card__image').alt = item.name;
@@ -98,10 +98,17 @@ function addCard(item) {
     popupPics.querySelector('.popup-pics__image').alt.textContent = item.name;
     popupPics.querySelector('.popup-pics__caption').textContent = item.name;
   });
-  cards.append(cardElement);
+  return cardElement;
 }
 
-initialCards.forEach(addCard);
+initialCards.reverse().forEach((item) => {
+  const cardsElement = createCard(item);
+  renderCard(cards, cardsElement);
+});
+
+function renderCard(cards, cardsElement) {
+  cards.prepend(cardsElement);
+}
 
 function popupPicsToggle() {
   popupPics.classList.toggle('popup-pics_opened');
@@ -114,26 +121,6 @@ function popupPicsCloseByClickOnOverlay() {
   popupPicsToggle();
 }
 
-function renderCard(item) {
-  const cardElement = cardTemplate.cloneNode(true);
-  cardElement.querySelector('.card__image').src = item.link;
-  cardElement.querySelector('.card__image').alt = item.name;
-  cardElement.querySelector('.card__title').textContent = item.name;
-  cardElement.querySelector('.card__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('card__like_active');
-  });
-  cardElement.querySelector('.card__delete').addEventListener('click', function (evt) {
-    evt.target.closest('.card').remove();
-  });
-  cardElement.querySelector('.card__image').addEventListener('click', function () {
-    popupPics.classList.toggle('popup-pics_opened');
-    popupPics.querySelector('.popup-pics__image').src = item.link;
-    popupPics.querySelector('.popup-pics__image').alt.textContent = item.name;
-    popupPics.querySelector('.popup-pics__caption').textContent = item.name;
-  });
-  cards.prepend(cardElement);
-}
-
 function cardsFormSubmitHandler (evt) {
   evt.preventDefault();
   const cardTitle = inputPlace.value;
@@ -142,7 +129,9 @@ function cardsFormSubmitHandler (evt) {
     name: cardTitle,
     link: cardImage,
   };
-  renderCard(item);
+  const cardsElement = createCard(item);
+  renderCard(cards, cardsElement);
+  cards.prepend(cardsElement);
   inputPlace.value = '';
   inputLink.value = '';
   popupCardsToggle();
