@@ -1,4 +1,4 @@
-.popup-cards__button-create {
+.popup__button {
   max-width: 358px;
   height: 50px;
   margin: 0;
@@ -14,13 +14,13 @@
   cursor: pointer;
 }
 
-.popup-cards__button-create:hover {
+.popup__button:hover {
   background-color: #000000;
   opacity: .8;
 }
 
 @media screen and (max-width: 460px) {
-  .popup-cards__button-create {
+  .popup__button {
     height: 40px;
     font-size: 14px;
   }

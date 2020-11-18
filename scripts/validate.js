@@ -29,8 +29,10 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement, config) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(config.inactiveButtonClass);
+    buttonElement.setAttribute('disabled', true);
   } else {
     buttonElement.classList.remove(config.inactiveButtonClass);
+    buttonElement.removeAttribute('disabled', true);
   }
 };
 
@@ -43,6 +45,16 @@ const setEventListeners = (formElement, config) => {
       checkInputValidity(formElement, inputElement, config);
       toggleButtonState(inputList, buttonElement, config);
     });
+  });
+};
+
+const removeErrorComponents = (config) => {
+  const inputList = Array.from(document.querySelectorAll(config.inputSelector));
+  inputList.forEach((inputElement) => {
+    const errorElement = document.querySelector(`#${inputElement.id}-error`);
+    inputElement.classList.remove(config.inputErrorClass);
+    errorElement.classList.remove(config.errorClass);
+    errorElement.textContent = '';
   });
 };
 
@@ -59,17 +71,8 @@ const enableValidation = (config) => {
 enableValidation(config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button-save',
-  inactiveButtonClass: 'popup__button-save_disabled',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
-});
-
-enableValidation(config = {
-  formSelector: '.popup-cards__form',
-  inputSelector: '.popup-cards__input',
-  submitButtonSelector: '.popup-cards__button-create',
-  inactiveButtonClass: 'popup-cards__button-create_disabled',
-  inputErrorClass: 'popup-cards__input_type_error',
-  errorClass: 'popup-cards__input-error_active'
 });

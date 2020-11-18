@@ -21,67 +21,73 @@
         alt="Фотография Жака-Ива Кусто">
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button type="button" class="button button_type_edit" aria-label="edit"></button>
+          <button type="button" class="button button_type_edit" data-for-popup="popupEditInfo"
+          aria-label="edit"></button>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button type="button" class="button button_type_add" aria-label="add"></button>
+        <button type="button" class="button button_type_add" data-for-popup="popupAddCard"
+        aria-label="add"></button>
       </section>
       <section class="cards content__cards"></section>
     </main>
     <footer class="footer page__footer">
       <p class="footer__paragraph">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup" id="popupEditInfo">
       <div class="popup__container">
-        <form class="popup__form" name="input-container" novalidate>
+        <form class="popup__form popup__form_type_edit" name="edit-profile" novalidate>
           <h2 class="popup__heading">Редактировать профиль</h2>
           <label class="popup__label">
-            <input id="name-input" class="popup__input popup__input_type_name" type="text"
-            name="name" required placeholder="Имя" minlength="2" maxlength="40">
+            <input id="name-input" class="popup__input popup__input_type_name"
+            type="text" name="name" required placeholder="Имя" minlength="2"
+            maxlength="40">
             <span id="name-input-error" class="popup__input-error"></span>
           </label>
           <label class="popup__label">
-            <input id="job-input"class="popup__input popup__input_type_job" type="text"
-            name="job" required placeholder="О себе" minlength="2" maxlength="200">
+            <input id="job-input"class="popup__input popup__input_type_job"
+            type="text" name="job" required placeholder="О себе" minlength="2"
+            maxlength="200">
             <span id="job-input-error" class="popup__input-error"></span>
           </label>
-          <button type="submit" class="button popup__button-save">Сохранить</button>
+          <button type="submit" class="button popup__button">Сохранить</button>
         </form>
-        <button type="button" class="button button_type_close" aria-label="close"></button>
+        <button type="button" class="button button_type_close" data-for-popup="popupEditInfo"
+        aria-label="close"></button>
       </div>
     </div>
-    <div class="popup-cards">
-      <div class="popup-cards__container">
-        <form class="popup-cards__form" name="input-container" novalidate>
-          <h2 class="popup-cards__heading">Новое место</h2>
-          <label class="popup-cards__label">
-            <input id="title-input" class="popup-cards__input popup-cards__input_type_place"
-            type="text" name="title" required placeholder="Название" minlength="2" maxlength="30">
-            <span id="title-input-error" class="popup-cards__input-error"></span>
+    <div class="popup" id="popupAddCard">
+      <div class="popup__container">
+        <form class="popup__form popup__form_type_add" name="add-card" novalidate>
+          <h2 class="popup__heading">Новое место</h2>
+          <label class="popup__label">
+            <input id="title-input" class="popup__input popup__input_type_place"
+            type="text" name="title" required placeholder="Название" minlength="2"
+            maxlength="30">
+            <span id="title-input-error" class="popup__input-error"></span>
           </label>
-          <label class="popup-cards__label">
-            <input id="link-input" class="popup-cards__input popup-cards__input_type_link"
+          <label class="popup__label">
+            <input id="link-input" class="popup__input popup__input_type_link"
             type="url" name="link" required placeholder="Ссылка на картинку">
-            <span id="link-input-error" class="popup-cards__input-error"></span>
+            <span id="link-input-error" class="popup__input-error"></span>
           </label>
-          <button type="submit" class="button popup-cards__button-create">Создать</button>
+          <button type="submit" class="button popup__button popup__button_inactive">Создать</button>
         </form>
-        <button type="button" class="button button_type_close-cards" aria-label="close"></button>
+        <button type="button" class="button button_type_close" data-for-popup="popupAddCard"
+        aria-label="close"></button>
       </div>
     </div>
-    <div class="popup-pics">
-      <div class="popup-pics__container">
-        <figure class="popup-pics__figure">
-          <img class="popup-pics__image">
-          <figcaption class="popup-pics__caption"></figcaption>
-        </figure>
-        <button type="button" class="button button_type_close-pics" aria-label="close"></button>
+    <div class="popup popup_type_image" id="popupZoomImage">
+      <div class="popup__container popup__container_type_image">
+        <button type="button" class="button button_type_close" data-for-popup="popupZoomImage"
+        aria-label="close"></button>
+        <img class="popup__image" src="#" alt="#">
+        <p class="popup__caption"></p>
       </div>
     </div>
   </div>
   <template id="card">
     <article class="card">
-      <img class="card__image">
+      <img class="card__image" src="#" alt="#">
       <div class="card__item">
         <h2 class="card__title"></h2>
         <button type="button" class="card__like" aria-label="score"></button>
@@ -90,7 +96,7 @@
     </article>
   </template>
   <script src="./scripts/cards.js"></script>
-  <script src="./scripts/index.js"></script>
   <script src="./scripts/validate.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
