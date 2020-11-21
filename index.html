@@ -33,7 +33,7 @@
     <footer class="footer page__footer">
       <p class="footer__paragraph">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup" id="popupEditInfo">
+    <div class="popup popup_type_edit">
       <div class="popup__container">
         <form class="popup__form popup__form_type_edit" name="edit-profile" novalidate>
           <h2 class="popup__heading">Редактировать профиль</h2>
@@ -49,13 +49,13 @@
             maxlength="200">
             <span id="job-input-error" class="popup__input-error"></span>
           </label>
-          <button type="submit" class="button popup__button">Сохранить</button>
+          <button type="submit" class="button popup__button popup__button_type_edit">Сохранить</button>
         </form>
-        <button type="button" class="button button_type_close" data-for-popup="popupEditInfo"
+        <button type="button" class="button popup__close popup__close_type_edit"
         aria-label="close"></button>
       </div>
     </div>
-    <div class="popup" id="popupAddCard">
+    <div class="popup popup_type_add">
       <div class="popup__container">
         <form class="popup__form popup__form_type_add" name="add-card" novalidate>
           <h2 class="popup__heading">Новое место</h2>
@@ -70,15 +70,15 @@
             type="url" name="link" required placeholder="Ссылка на картинку">
             <span id="link-input-error" class="popup__input-error"></span>
           </label>
-          <button type="submit" class="button popup__button popup__button_inactive">Создать</button>
+          <button type="submit" class="button popup__button popup__button_type_add">Создать</button>
         </form>
-        <button type="button" class="button button_type_close" data-for-popup="popupAddCard"
+        <button type="button" class="button popup__close popup__close_type_add"
         aria-label="close"></button>
       </div>
     </div>
-    <div class="popup popup_type_image" id="popupZoomImage">
+    <div class="popup popup_type_image">
       <div class="popup__container popup__container_type_image">
-        <button type="button" class="button button_type_close" data-for-popup="popupZoomImage"
+        <button type="button" class="button popup__close popup__close_type_image"
         aria-label="close"></button>
         <img class="popup__image" src="#" alt="#">
         <p class="popup__caption"></p>
