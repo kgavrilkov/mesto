@@ -113,7 +113,6 @@ function handleAddFormSubmit (evt) {
   };
   const cardsElement = createCard(item);
   renderCard(cards, cardsElement);
-  cards.prepend(cardsElement);
   closePopup(popupCard);
 }
 
