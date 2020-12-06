@@ -1,10 +1,16 @@
-import {initialCards, popupImage, image, caption, closeImageButton} from './Constants.js';
+import {popupImage, image, caption, closeImageButton, handleOpenPopup, handleEscape,
+        handleClosePopup, handleClosePopupByClickOnOverlay} from './Constants.js';
 
 class Card {
   constructor(data, cardSelector) {
     this._title = data.name;
     this._image = data.link;
     this._cardSelector = cardSelector;
+
+    this._handleOpenPopup = handleOpenPopup;
+    this._handleEscape = handleEscape;
+    this._handleClosePopup = handleClosePopup;
+    this._handleClosePopupByClickOnOverlay = handleClosePopupByClickOnOverlay;
   }
 
   _getTemplate() {
@@ -37,6 +43,9 @@ class Card {
       this._handleDeleteClick();
     });
     this._element.querySelector('.card__image').addEventListener('click', () => {
+      image.src = this._image;
+      image.alt = this._title;
+      caption.textContent = this._title;
       this._handleOpenPopup();
     });
     closeImageButton.addEventListener('click', () => {
@@ -55,37 +64,6 @@ class Card {
     this._element.querySelector('.card__delete').closest('.card').remove();
   }
 
-  _handleOpenPopup() {
-    popupImage.classList.add('popup_opened');
-    image.src = this._image;
-    caption.textContent = this._title;
-    document.addEventListener('keydown', this._handleEscape);
-  }
-
-  _handleClosePopup() {
-    popupImage.classList.remove('popup_opened')
-    document.removeEventListener('keydown', this._handleEscape);
-  }
-
-  _handleEscape(evt) {
-    if (evt.key === 'Escape') {
-      popupImage.classList.remove('popup_opened');
-    }
-  }
-
-  _handleClosePopupByClickOnOverlay() {
-    if (event.target !== event.currentTarget) {
-      return
-    }
-    popupImage.classList.remove('popup_opened');
-  }
-
 }
-
-initialCards.forEach((item) => {
-  const card = new Card(item, '#card');
-  const cardElement = card.generateCard();
-  document.querySelector('.cards').append(cardElement);
-});
 
 export default Card;

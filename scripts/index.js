@@ -1,6 +1,6 @@
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
-import {defaultConfig} from './Constants.js';
+import {defaultConfig, initialCards, ESC_KEYCODE} from './Constants.js';
 
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__subtitle');
@@ -36,8 +36,8 @@ function closePopup(popup) {
   document.removeEventListener('keydown', handleEscape);
 }
 
-function closePopupByClickOnOverlay() {
-  if (event.target !== event.currentTarget) {
+function closePopupByClickOnOverlay(evt) {
+  if (evt.target !== evt.currentTarget) {
     return
   }
   const openedPopup = document.querySelector('.popup_opened');
@@ -74,6 +74,12 @@ function removeErrorComponents() {
   });
 };
 
+initialCards.forEach((item) => {
+  const card = new Card(item, '#card');
+  const cardElement = card.generateCard();
+  document.querySelector('.cards').append(cardElement);
+});
+
 function createCard(item) {
   const card = new Card(item, '#card');
   return card.generateCard();
@@ -81,20 +87,6 @@ function createCard(item) {
 
 function renderCard(cards, cardsElement) {
   cards.prepend(cardsElement);
-}
-
-function handleEditFormSubmit(evt) {
-  evt.preventDefault();
-  profileName.textContent = inputName.value;
-  profileJob.textContent = inputJob.value;
-  closePopup(popupProfile);
-}
-
-function handleEscape(evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
-  }
 }
 
 function handleAddFormSubmit(evt) {
@@ -108,6 +100,20 @@ function handleAddFormSubmit(evt) {
   const cardsElement = createCard(item);
   renderCard(cards, cardsElement);
   closePopup(popupCard);
+}
+
+function handleEditFormSubmit(evt) {
+  evt.preventDefault();
+  profileName.textContent = inputName.value;
+  profileJob.textContent = inputJob.value;
+  closePopup(popupProfile);
+}
+
+function handleEscape(evt) {
+  if (evt.which === ESC_KEYCODE) {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
 }
 
 editButton.addEventListener('click', function () {
