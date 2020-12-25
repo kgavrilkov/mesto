@@ -1,0 +1,39 @@
+{
+  "name": "yandex_praktikum",
+  "version": "0.0.1",
+  "description": "* __Основная идея.__ [Данный проект](https://kgavrilkov.github.io/mesto/) представляет собой интерактивный сервис, позволяющий редактировать информацию из профиля, добавлять и удалять понравившиеся фотографии, а также отмечать интересные снимки \"лайком\". * __Базовые составляющие.__ Основными технологиями, использованными в проекте, являются: flex, grid, БЭМ, адаптивная вёрстка, интерактивность. * __Системные требования.__ При создании проекта использовались следующие версии языков: HTML5, CSS3, JS.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kgavrilkov/mesto.git"
+  },
+  "author": "Kirill Gavrilkov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kgavrilkov/mesto/issues"
+  },
+  "homepage": "https://github.com/kgavrilkov/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "autoprefixer": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.1",
+    "cssnano": "^4.1.10",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^1.3.3",
+    "postcss-loader": "^4.1.0",
+    "webpack": "^5.10.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "core-js": "^3.8.1",
+    "rimraf": "^3.0.2"
+  }
+}

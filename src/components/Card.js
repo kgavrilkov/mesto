@@ -1,16 +1,10 @@
-import {popupImage, image, caption, closeImageButton, handleOpenPopup, handleEscape,
-        handleClosePopup, handleClosePopupByClickOnOverlay} from './Constants.js';
-
 class Card {
-  constructor(data, cardSelector) {
+  constructor({data, handleCardClick}, cardSelector) {
     this._title = data.name;
     this._image = data.link;
     this._cardSelector = cardSelector;
 
-    this._handleOpenPopup = handleOpenPopup;
-    this._handleEscape = handleEscape;
-    this._handleClosePopup = handleClosePopup;
-    this._handleClosePopupByClickOnOverlay = handleClosePopupByClickOnOverlay;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -43,16 +37,7 @@ class Card {
       this._handleDeleteClick();
     });
     this._element.querySelector('.card__image').addEventListener('click', () => {
-      image.src = this._image;
-      image.alt = this._title;
-      caption.textContent = this._title;
-      this._handleOpenPopup();
-    });
-    closeImageButton.addEventListener('click', () => {
-      this._handleClosePopup();
-    });
-    popupImage.addEventListener('mousedown', () => {
-      this._handleClosePopupByClickOnOverlay();
+      this._handleCardClick();
     });
   }
 

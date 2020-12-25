@@ -7,17 +7,16 @@
   различных мест с возможностью проставления лайков">
   <meta name="keywords" content="фотографии">
   <meta name="author" content="Гаврилков Кирилл">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 <body class="root">
   <div class="page">
     <header class="header page__header">
-      <img class="logo header__logo" src="./images/logo.svg" alt="Логотип">
+      <img class="logo header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип">
     </header>
     <main class="content">
       <section class="profile content__profile">
-        <img class="profile__avatar" src="./images/profile-image.jpg"
+        <img class="profile__avatar" src="<%=require('./images/profile-image.jpg')%>"
         alt="Фотография Жака-Ива Кусто">
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -61,7 +60,7 @@
           <h2 class="popup__heading">Новое место</h2>
           <label class="popup__label">
             <input id="title-input" class="popup__input popup__input_type_place"
-            type="text" name="title" required placeholder="Название" minlength="2"
+            type="text" name="name" required placeholder="Название" minlength="2"
             maxlength="30">
             <span id="title-input-error" class="popup__input-error"></span>
           </label>
@@ -95,9 +94,5 @@
       <button type="button" class="card__delete" aria-label="delete"></button>
     </article>
   </template>
-  <script type="module" src="./scripts/Constants.js"></script>
-  <script type="module" src="./scripts/Card.js"></script>
-  <script type="module" src="./scripts/FormValidator.js"></script>
-  <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>

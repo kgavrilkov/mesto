@@ -5,7 +5,7 @@ class FormValidator {
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
-    this._element = document.querySelector(`.${popupSelector}`);
+    this._element = document.querySelector(popupSelector);
   }
 
   _showInputError(inputElement, errorMessage) {
