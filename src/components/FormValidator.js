@@ -46,6 +46,26 @@ class FormValidator {
     }
   }
 
+  inactivateButton() {
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._buttonElement.setAttribute('disabled', true);
+  }
+
+  activateButton() {
+    this._buttonElement.classList.remove(this._inactiveButtonClass);
+    this._buttonElement.removeAttribute('disabled', true);
+  }
+
+  removeErrorComponents() {
+    const inputList = Array.from(document.querySelectorAll(this._inputSelector));
+    inputList.forEach((inputElement) => {
+      const errorElement = document.querySelector(`#${inputElement.id}-error`);
+      inputElement.classList.remove(this._inputErrorClass);
+      errorElement.classList.remove(this._errorClass);
+      errorElement.textContent = '';
+    });
+  }
+
   _setEventListeners() {
     this._inputList = Array.from(this._element.querySelectorAll(this._inputSelector));
     this._buttonElement = this._element.querySelector(this._submitButtonSelector);
