@@ -1,10 +1,17 @@
 class Card {
-  constructor({data, handleCardClick}, cardSelector) {
+  constructor({data, handleCardClick, handleDeleteClick, handleLikeClick}, cardSelector) {
     this._title = data.name;
     this._image = data.link;
+    this._userId = data.currentUserId;
+    this._ownerId = data.owner._id;
+    this._cardId = data._id;
+    this._likes = data.likes;
     this._cardSelector = cardSelector;
 
+
     this._handleCardClick = handleCardClick;
+    this._handleDeleteClick = handleDeleteClick;
+    this._handleLikeClick = handleLikeClick;
   }
 
   _getTemplate() {
@@ -20,11 +27,14 @@ class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
+    this._updateLikeItem();
 
     const imageElement = this._element.querySelector('.card__image');
     imageElement.src = this._image;
     imageElement.alt = this._title;
     this._element.querySelector('.card__title').textContent = this._title;
+    this._element.querySelector('.card__delete')
+      .classList.add(this._userId === this._ownerId ? 'card__delete_visible' : 'card__delete_invisible');
 
     return this._element;
   }
@@ -41,14 +51,31 @@ class Card {
     });
   }
 
-  _handleLikeClick() {
-    this._element.querySelector('.card__like').classList.toggle('card__like_active');
+  isLiked() {
+    return Boolean(this._likes.find(item => item._id === this._userId));
   }
 
-  _handleDeleteClick() {
-    this._element.querySelector('.card__delete').closest('.card').remove();
+  _updateLikeItem() {
+    if (this.isLiked()) {
+      this._element.querySelector('.card__like').classList.add('card__like_active');
+    } else {
+      this._element.querySelector('.card__like').classList.remove('card__like_active');
+    }
+    this._element.querySelector('.card__like-counter').textContent = this._likes.length;
   }
 
+  setLikeItem(data) {
+    this._updateLikeItem();
+    this._likes = data.likes;
+  }
+
+  removeCard() {
+    this._element.remove();
+  }
+
+  getId() {
+    return this._cardId;
+  }
 }
 
 export default Card;

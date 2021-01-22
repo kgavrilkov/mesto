@@ -13,12 +13,6 @@
   }
 }
 
-@media screen and (max-width: 895px) {
-  .profile__info {
-    align-self: center;
-  }
-}
-
 @media screen and (max-width: 380px) {
   .profile__info {
     gap: 14px 7px;
