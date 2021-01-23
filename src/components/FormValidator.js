@@ -56,14 +56,12 @@ class FormValidator {
   }
 
   removeErrorComponents() {
-    this._inputList;
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
   }
 
   _setEventListeners() {
-    this._inputList;
     this._buttonElement = this._element.querySelector(this._submitButtonSelector);
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
